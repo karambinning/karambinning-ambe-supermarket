@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ambe Supermarket — 30 St Andrews Street, Northampton NN1 2JD</title>
+<meta name="description" content="Ambe Supermarket — an independent neighbourhood grocery on St Andrews Street in central Northampton (NN1 2JD)." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400,30;9..144,600,30;9..144,800,50&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+<style>
+  @property --grad-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+  @property --grad-warm  { syntax: "<color>"; initial-value: #D08760; inherits: false; }
+
+  :root{
+    --paper:      #F5EBDB;   /* warmer cream than the playbook clay, mixed with terracotta dust */
+    --paper-deep: #E7D2BD;   /* coloured slab */
+    --ember:      #D08760;   /* mid clay */
+    --brick:      #8E3B22;   /* brick / deep ember */
+    --cocoa:      #2D1A11;   /* near-black, warm */
+    --rule:       rgba(45,26,17,.42);
+    --rule-soft:  rgba(45,26,17,.16);
+    --display:    "Fraunces", "Cormorant Garamond", Georgia, serif;
+    --body:       "Newsreader", "Source Serif 4", Georgia, serif;
+    --rhythm:     clamp(1rem, .65rem + .9vw, 1.18rem);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--cocoa);
+    font-family:var(--body);
+    font-size:var(--rhythm);
+    line-height:1.55;
+    font-feature-settings:"liga","kern","onum";
+    -webkit-font-smoothing:antialiased;
+    text-wrap:pretty;
+    hyphens:auto;
+    overflow-x:hidden;
+  }
+
+  /* unobtrusive paper grain */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    background:
+      repeating-linear-gradient(132deg, rgba(45,26,17,.020) 0 1px, transparent 1px 4px),
+      radial-gradient(circle at 18% 10%, rgba(208,135,96,.10), transparent 55%),
+      radial-gradient(circle at 88% 92%, rgba(142,59,34,.08),  transparent 60%);
+    mix-blend-mode:multiply;
+    z-index:1;
+  }
+  main, header, footer, section { position:relative; z-index:2 }
+
+  a{ color:inherit; text-decoration:none }
+
+  /* ---- top nav --------------------------------------------------- */
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:1.5rem;
+    padding:1.4rem clamp(1.2rem, 4vw, 3rem);
+    border-bottom:1px solid var(--rule-soft);
+    font-family:var(--display);
+    font-variation-settings:"opsz" 14, "SOFT" 30;
+    letter-spacing:.01em;
+  }
+  .topbar__mark{
+    font-weight:600;
+    font-size:clamp(1.05rem, .9rem + .25vw, 1.25rem);
+  }
+  .topbar__mark em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--brick);
+  }
+  .topbar__where{
+    font-family:var(--body);
+    font-size:.86rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--brick);
+  }
+
+  /* ---- HERO ------------------------------------------------------ */
+  .hero{
+    padding: clamp(4rem, 9vw, 9rem) clamp(1.2rem, 4vw, 3rem) clamp(3rem, 7vw, 6rem);
+    position:relative;
+  }
+  .hero__eyebrow{
+    font-family:var(--body);
+    font-size:.78rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--brick);
+    margin-bottom:clamp(1.5rem, 4vw, 3rem);
+    display:flex; gap:1rem; align-items:center;
+  }
+  .hero__eyebrow::after{
+    content:""; flex:1 1 auto; height:1px;
+    background:var(--rule);
+    max-width:38vw;
+  }
+
+  .masthead{
+    font-family:var(--display);
+    font-weight:800;
+    font-variation-settings:"opsz" 144, "SOFT" 50;
+    font-size: clamp(5rem, 22vw, 22rem);
+    line-height:.82;
+    letter-spacing:-0.045em;
+    text-wrap:balance;
+    background:
+      linear-gradient(
+        var(--grad-angle),
+        var(--cocoa) 0%,
+        var(--brick) 35%,
+        var(--ember) 60%,
+        var(--cocoa) 100%
+      );
+    background-size:200% 200%;
+    -webkit-background-clip:text;
+            background-clip:text;
+    color:transparent;
+    animation: drift 22s linear infinite;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+  }
+  @keyframes drift {
+    0%   { --grad-angle:  20deg; background-position:  0% 0%; }
+    50%  { --grad-angle: 200deg; background-position: 100% 100%; }
+    100% { --grad-angle: 380deg; background-position:  0% 0%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .masthead{ animation:none; }
+  }
+
+  .hero__caption{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:1rem;
+    max-width:62ch;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .hero__caption p{
+    font-family:var(--body);
+    font-variation-settings:"opsz" 22;
+    font-size: clamp(1.1rem, .8rem + .8vw, 1.45rem);
+    line-height:1.5;
+    color:var(--cocoa);
+  }
+  .hero__caption p em{
+    font-style:italic;
+    color:var(--brick);
+  }
+
+  /* address pill in the corner of the hero */
+  .hero__pin{
+    margin-top: clamp(2rem, 4vw, 3rem);
+    display:inline-flex;
+    align-items:center;
+    gap:.85rem;
+    border:1px solid var(--rule);
+    border-radius:999px;
+    padding:.55rem 1.1rem .55rem .9rem;
+    background:var(--paper);
+    font-family:var(--body);
+    font-size:.9rem;
+    letter-spacing:.04em;
+  }
+  .hero__pin svg{ width:14px; height:14px; flex:0 0 auto; color:var(--brick) }
+  .hero__pin span{ color:var(--cocoa) }
+  .hero__pin b{
+    font-weight:600;
+    color:var(--brick);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:.78rem;
+  }
+
+  /* ---- coloured slab section ------------------------------------- */
+  .slab{
+    background:var(--paper-deep);
+    color:var(--cocoa);
+    padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem);
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+  .slab__inner{
+    max-width: 78rem;
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: minmax(0,1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+  @media (min-width: 56rem){
+    .slab__inner{
+      grid-template-columns: 0.9fr 1.3fr;
+      align-items: start;
+    }
+  }
+  .slab__label{
+    font-family:var(--body);
+    font-size:.78rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--brick);
+    border-top:1px solid var(--brick);
+    padding-top:.85rem;
+  }
+  .slab__title{
+    font-family:var(--display);
+    font-variation-settings:"opsz" 72, "SOFT" 30;
+    font-weight:600;
+    font-style:italic;
+    font-size: clamp(2.4rem, 4vw + .5rem, 4.4rem);
+    line-height:.98;
+    letter-spacing:-0.02em;
+    text-wrap:balance;
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    color:var(--cocoa);
+  }
+  .slab__title b{
+    font-style:normal;
+    font-weight:800;
+    color:var(--brick);
+  }
+  .slab__body p + p { margin-top: 1.1rem }
+  .slab__body p{
+    font-size: clamp(1.05rem, .8rem + .55vw, 1.3rem);
+    line-height: 1.55;
+    max-width: 60ch;
+  }
+
+  /* scroll-driven reveal where supported */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(1.6rem); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  }
+
+  /* ---- find us / letterhead ------------------------------------- */
+  .findus{
+    padding: clamp(4rem, 9vw, 9rem) clamp(1.2rem, 4vw, 3rem);
+    background:var(--paper);
+  }
+  .findus__inner{
+    max-width: 80rem; margin: 0 auto;
+    display:grid; gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: minmax(0,1fr);
+  }
+  @media (min-width: 60rem){
+    .findus__inner{
+      grid-template-columns: 1.1fr 1fr;
+      align-items:end;
+    }
+  }
+  .findus__title{
+    font-family:var(--display);
+    font-weight:800;
+    font-variation-settings:"opsz" 144, "SOFT" 30;
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height:.85;
+    letter-spacing:-0.04em;
+    color:var(--cocoa);
+    text-wrap:balance;
+  }
+  .findus__title span{ display:block; color:var(--brick); font-style:italic; font-weight:600; }
+
+  .letterhead{
+    border-top:1px solid var(--rule);
+    padding-top: 1.4rem;
+    display:grid;
+    grid-template-columns: max-content 1fr;
+    gap: .6rem 2.2rem;
+    font-family:var(--body);
+  }
+  .letterhead dt{
+    font-size:.74rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--brick);
+    padding-top:.18rem;
+  }
+  .letterhead dd{
+    font-size: clamp(1rem, .8rem + .35vw, 1.18rem);
+    line-height: 1.45;
+    color:var(--cocoa);
+  }
+  .letterhead dd b{
+    font-family:var(--display);
+    font-weight:600;
+    font-variation-settings:"opsz" 36, "SOFT" 30;
+    font-size: clamp(1.4rem, 1rem + .7vw, 1.9rem);
+    letter-spacing:-0.01em;
+  }
+  .letterhead dd a{ border-bottom:1px solid var(--brick); padding-bottom:1px; }
+  .letterhead dd a:hover{ color:var(--brick) }
+
+  .maplink{
+    display:inline-flex;
+    align-items:center;
+    gap:.7rem;
+    margin-top: clamp(2rem, 3vw, 2.5rem);
+    font-family:var(--display);
+    font-weight:600;
+    font-variation-settings:"opsz" 36;
+    font-size: clamp(1.05rem, .9rem + .3vw, 1.3rem);
+    color:var(--cocoa);
+    padding-bottom:.18rem;
+    border-bottom:1px solid var(--cocoa);
+    transition: gap .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .maplink:hover{
+    gap:1.1rem;
+    color:var(--brick);
+    border-color:var(--brick);
+  }
+  .maplink svg{ width:16px; height:16px; flex:0 0 auto }
+
+  /* ---- footer ---------------------------------------------------- */
+  footer{
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.2rem, 4vw, 3rem);
+    border-top:1px solid var(--rule);
+    color:var(--cocoa);
+    background:var(--paper);
+  }
+  .foot{
+    max-width:80rem; margin:0 auto;
+    display:flex; flex-wrap:wrap; gap:1.4rem 2.4rem;
+    justify-content:space-between; align-items:baseline;
+    font-family:var(--body);
+    font-size:.86rem;
+    letter-spacing:.04em;
+  }
+  .foot__mark{
+    font-family:var(--display);
+    font-style:italic;
+    font-weight:600;
+    font-variation-settings:"opsz" 24;
+    font-size:1.05rem;
+    letter-spacing:0;
+    color:var(--brick);
+  }
+  .foot__addr{ opacity:.86 }
+
+  /* selection */
+  ::selection{ background:var(--brick); color:var(--paper) }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__mark">Ambe <em>Supermarket</em></div>
+    <div class="topbar__where">Northampton · NN1 2JD</div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero__eyebrow"><span>An independent grocery</span></div>
+
+      <h1 class="masthead" aria-label="Ambe">Ambe</h1>
+
+      <div class="hero__caption">
+        <p>
+          A neighbourhood supermarket on the corner of <em>St Andrews Street</em>,
+          a short walk north of Northampton's Market Square.
+        </p>
+      </div>
+
+      <a class="hero__pin" href="https://www.google.com/maps/dir/?api=1&destination=52.2409983,-0.900777" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 22s-7-7.58-7-13a7 7 0 1 1 14 0c0 5.42-7 13-7 13Z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <span><b>Find us · </b>30 St Andrews Street, NN1 2JD</span>
+      </a>
+    </section>
+
+    <section class="slab reveal">
+      <div class="slab__inner">
+        <div class="slab__label">About the shop</div>
+        <div class="slab__body">
+          <h2 class="slab__title">A corner store, <b>plain &amp; useful</b>, in the middle of town.</h2>
+          <p>
+            Ambe Supermarket sits at number 30 on St Andrews Street &mdash; the long terrace
+            that runs from the top of Sheep Street out toward Spencer Bridge Road.
+            It is the sort of shop you walk into without a list and leave with what you
+            needed for tonight.
+          </p>
+          <p>
+            For the full range, fresh stock and what's in this week, come by the shop.
+            We've kept this page short on purpose: a small, honest record that the shop
+            is here, what it's called, and where to find it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="findus reveal">
+      <div class="findus__inner">
+
+        <h2 class="findus__title">
+          Come in.
+          <span>You'll know it when you see it.</span>
+        </h2>
+
+        <div>
+          <dl class="letterhead">
+            <dt>Shop</dt>
+            <dd><b>Ambe Supermarket</b></dd>
+
+            <dt>Address</dt>
+            <dd>
+              30 St Andrews Street<br/>
+              Northampton<br/>
+              <b>NN1 2JD</b>
+            </dd>
+
+            <dt>Locale</dt>
+            <dd>Central Northampton &mdash; a few minutes' walk from the Market Square and the Grosvenor Centre.</dd>
+          </dl>
+
+          <a class="maplink"
+             href="https://www.google.com/maps/dir/?api=1&destination=52.2409983,-0.900777"
+             target="_blank" rel="noopener">
+            <span>Open in Google Maps</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div class="foot__mark">Ambe Supermarket</div>
+      <div class="foot__addr">30 St Andrews Street · Northampton · NN1 2JD</div>
+      <div class="foot__addr">&copy; Ambe Supermarket</div>
+    </div>
+  </footer>
+
+</body>
+</html>
